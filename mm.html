@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>与查理苏的日常手札</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI','Microsoft YaHei',sans-serif;
+        }
+        body{
+            background-color: #f9f5ff;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #e6c9ff 0%, #b19cd9 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #5a3d8a;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #5a3d8a;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #3d2769;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3d2769;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            background: linear-gradient(rgba(91, 61, 138, 0.85), rgba(91, 61, 138, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%235a3d8a"/><path d="M0 0L100 100M100 0L0 100" stroke="%23b19cd9" stroke-width="1"/></svg>');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="2" cy="2" r="1" fill="%23ffffff" opacity="0.2"/></svg>');
+            animation: sparkle 3s infinite linear;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            background: #ff6b9d;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6);
+        }
+        
+        /* 内容区域 */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #5a3d8a;
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #b19cd9, #ff6b9d);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .character-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .character-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.5s;
+        }
+        
+        .character-img:hover {
+            transform: translateY(-10px);
+        }
+        
+        .character-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .character-details {
+            flex: 2;
+            min-width: 300px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .character-details h3 {
+            color: #5a3d8a;
+            margin-bottom: 20px;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .character-details h3 i {
+            margin-right: 10px;
+            color: #ff6b9d;
+        }
+        
+        .character-details p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .detail-item {
+            background: #f0e6ff;
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .detail-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #5a3d8a;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        /* 博客区域 */
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .post-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .post-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #b19cd9, #ff6b9d);
+        }
+        
+        .post-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .post-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .post-card:hover .post-img img {
+            transform: scale(1.1);
+        }
+        
+        .post-content {
+            padding: 25px;
+        }
+        
+        .post-date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-date i {
+            margin-right: 5px;
+        }
+        
+        .post-title {
+            color: #5a3d8a;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            line-height: 1.4;
+        }
+        
+        .post-excerpt {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .read-more {
+            color: #b19cd9;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .read-more:hover {
+            color: #5a3d8a;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* 画廊区域 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 280px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-item:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.7));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .gallery-item:hover:after {
+            opacity: 1;
+        }
+        
+        /* 语录区域 */
+        .quotes {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quotes:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            font-size: 120px;
+            color: #f0e6ff;
+            font-family: Georgia, serif;
+            line-height: 1;
+            z-index: 0;
+        }
+        
+        .quote-slider {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .quote {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            text-align: center;
+            padding: 20px;
+            z-index: 1;
+        }
+        
+        .quote.active {
+            opacity: 1;
+        }
+        
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #5a3d8a;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .quote-source {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        
+        .quote-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .quote-controls button {
+            background: #b19cd9;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .quote-controls button:hover {
+            background: #5a3d8a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        
+        /* 联系表单 */
+        .contact-form {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 80px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #5a3d8a;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e6e6e6;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #b19cd9;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(177, 156, 217, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #b19cd9, #ff6b9d);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(177, 156, 217, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(177, 156, 217, 0.6);
+        }
+        
+        .btn i {
+            margin-left: 8px;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: linear-gradient(135deg, #5a3d8a 0%, #3d2769 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo i {
+            margin-right: 10px;
+            color: #ff6b9d;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links li {
+            margin: 0 20px;
+        }
+        
+        .footer-links a {
+            color: #e6c9ff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: #ff6b9d;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            color: #b19cd9;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .character-info {
+                flex-direction: column;
+            }
+            
+            .character-img, .character-details {
+                flex: none;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 80px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-posts {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-links li {
+                margin: 10px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .character-details {
+                padding: 25px;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+
+    </style>
+</head>       
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><i class="fas fa-heart"></i>与查理苏的日常手札</div>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">角色介绍</a></li>
+                    <li><a href="#blog">博客文章</a></li>
+                    <li><a href="#gallery">画廊</a></li>
+                    <li><a href="#quotes">经典语录</a></li>
+                    <li><a href="#contact">留言板</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>查理苏</h1>
+            <p>"未婚妻，看来你是被我的完美迷住了。"——记录与查少相遇的每一个心动瞬间</p>
+            <a href="#about" class="hero-btn">了解更多 <i class="fas fa-arrow-down"></i></a>
+        </div>
+    </section>
+
+    <!-- 角色介绍 -->
+    <section class="container" id="about">
+        <h2 class="section-title">角色介绍</h2>
+        <div class="character-info">
+            <div class="character-img">
+                <!-- 使用SVG作为占位图 -->
+                <img src="c:\Users\Administrator\Pictures\1a32eeb8878f01002bb5b0c9ed959009.jpg" viewBox="0 0 400 500">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#b19cd9;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#5a3d8a;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="400" height="500" fill="url(#grad1)"/>
+                    <circle cx="200" cy="180" r="70" fill="#ff6b9d" opacity="0.7"/>
+                    <rect x="130" y="250" width="140" height="200" rx="20" fill="#ff6b9d" opacity="0.7"/>
+                    <text x="200" y="400" text-anchor="middle" fill="white" font-size="24" font-weight="bold">查理苏</text>
+                </svg>
+            </div>
+            <div class="character-details">
+                <h3><i class="fas fa-user-md"></i>关于查理苏</h3>
+                <p>查理苏是《光与夜之恋》中极具魅力的角色，身为圣晓综合医院烧伤整形科医生与查家少爷，他自信张扬却不失温柔，看似自恋的外表下隐藏着细腻的内心和令人心疼的过往。他的出现就像一束光照进了我的世界，用独特的魅力征服了无数"未婚妻"的心。</p>
+                
+                <h3><i class="fas fa-info-circle"></i>基本信息</h3>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <span class="detail-label">姓名：</span>查理苏
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">年龄：</span>27岁
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">生日：</span>7月24日
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">身高：</span>186cm
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">职业：</span>烧伤整形科医生
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">宠物：</span>雪莉酒
+                </div>
+                
+                <h3><i class="fas fa-star"></i>角色特点</h3>
+                <p>自信张扬、直球表达、专业可靠、温柔细腻、偶尔流露的脆弱感、幽默风趣。他是光启市最耀眼的"凤凰"，也是未婚妻心中的"完美未婚夫"。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 博客文章 -->
+    <section class="container" id="blog">
+        <h2 class="section-title">博客文章</h2>
+        <div class="blog-posts">
+            <!-- 文章1 -->
+            <div class="post-card">
+                <div class="post-img">
+                    <img src="c:\Users\Administrator\Pictures\微信图片_20251115144213_8_574.jpg" viewBox="0 0 400 250">
+                        <defs>
+                            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#b19cd9;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="400" height="250" fill="url(#grad2)"/>
+                        <text x="200" y="125" text-anchor="middle" fill="white" font-size="20" font-weight="bold">我为什么爱上了查理苏</text>
+                    </svg>
+                </div>
+                <div class="post-content">
+                    <div class="post-date"><i class="far fa-calendar"></i> 2023年10月15日</div>
+                    <h3 class="post-title">我为什么爱上了查理苏</h3>
+                    <p class="post-excerpt">记录第一次遇见他的心动瞬间，以及随着剧情发展对他的理解与情感变化...</p>
+                    <a href="#" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- 文章2 -->
+            <div class="post-card">
+                <div class="post-img">
+                    <img src="c:\Users\Administrator\Pictures\cc4f1190fcfb237e12a689c710914f86.jpg" viewBox="0 0 400 250">
+                        <defs>
+                            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#b19cd9;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#5a3d8a;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="400" height="250" fill="url(#grad3)"/>
+                        <text x="200" y="125" text-anchor="middle" fill="white" font-size="20" font-weight="bold">查理苏的十大心动瞬间</text>
+                    </svg>
+                </div>
+                <div class="post-content">
+                    <div class="post-date"><i class="far fa-calendar"></i> 2023年10月8日</div>
+                    <h3 class="post-title">查理苏的十大心动瞬间</h3>
+                    <p class="post-excerpt">盘点游戏中那些让我心跳加速、无法忘怀的精彩时刻...</p>
+                    <a href="#" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- 文章3 -->
+            <div class="post-card">
+                <div class="post-img">
+                    <img src="c:\Users\Administrator\Pictures\4759ab06a5accb2ce5c4c135119846cf.jpg" viewBox="0 0 400 250">
+                        <defs>
+                            <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#5a3d8a;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ff6b9d;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="400" height="250" fill="url(#grad4)"/>
+                        <text x="200" y="125" text-anchor="middle" fill="white" font-size="20" font-weight="bold">分析查理苏的情感发展轨迹</text>
+                    </svg>
+                </div>
+                <div class="post-content">
+                    <div class="post-date"><i class="far fa-calendar"></i> 2023年10月1日</div>
+                    <h3 class="post-title">分析查理苏的情感发展轨迹</h3>
+                    <p class="post-excerpt">深入探讨他的内心世界，理解他每个行为背后的情感逻辑...</p>
+                    <a href="#" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 画廊 -->
+    <section class="container" id="gallery">
+        <h2 class="section-title">画廊</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="c:\Users\Administrator\Pictures\431b0bbe3feed57926d701cf67967b32.jpg" viewBox="0 0 300 300">
+                    <rect width="300" height="300" fill="#b19cd9"/>
+                    <text x="150" y="150" text-anchor="middle" fill="white" font-size="18" font-weight="bold">查理苏 CG 1</text>
+                </svg>
+            </div>
+            <div class="gallery-item">
+                <img src="c:\Users\Administrator\Pictures\7654a1944bc0ff734a1da5452cce4982.jpg" viewBox="0 0 300 300">
+                    <rect width="300" height="300" fill="#ff6b9d"/>
+                    <text x="150" y="150" text-anchor="middle" fill="white" font-size="18" font-weight="bold">查理苏 CG 2</text>
+                </svg>
+            </div>
+            <div class="gallery-item">
+                <img src="c:\Users\Administrator\Pictures\4b7d58533e29999efa9c0c0f040b9101.jpg" viewBox="0 0 300 300">
+                    <rect width="300" height="300" fill="#5a3d8a"/>
+                    <text x="150" y="150" text-anchor="middle" fill="white" font-size="18" font-weight="bold">查理苏 CG 3</text>
+                </svg>
+            </div>
+            <div class="gallery-item">
+                <img src="c:\Users\Administrator\Pictures\b9784d1e3e70059ea35953c9904fec35.jpg" viewBox="0 0 300 300">
+                    <rect width="300" height="300" fill="#b19cd9"/>
+                    <text x="150" y="150" text-anchor="middle" fill="white" font-size="18" font-weight="bold">查理苏 CG 4</text>
+                </svg>
+            </div>
+            <div class="gallery-item">
+                <img src="c:\Users\Administrator\Pictures\0be32ab663cfa95035f68d3807402ae5.jpg" viewBox="0 0 300 300">
+                    <rect width="300" height="300" fill="#ff6b9d"/>
+                    <text x="150" y="150" text-anchor="middle" fill="white" font-size="18" font-weight="bold">查理苏 CG 5</text>
+                </svg>
+            </div>
+            <div class="gallery-item">
+                <img src="c:\Users\Administrator\Pictures\17c7574cab4cc1cd3148beea4862d936.jpg" viewBox="0 0 300 300">
+                    <rect width="300" height="300" fill="#5a3d8a"/>
+                    <text x="150" y="150" text-anchor="middle" fill="white" font-size="18" font-weight="bold">查理苏 CG 6</text>
+                </svg>
+            </div>
+            <div class="gallery-item">
+                <img src="c:\Users\Administrator\Pictures\4790d95e8a37d78c19467ae03ba108c6.jpg" viewBox="0 0 300 300">
+                    <rect width="300" height="300" fill="#5a3d8a"/>
+                    <text x="150" y="150" text-anchor="middle" fill="white" font-size="18" font-weight="bold">查理苏 CG 7</text>
+                </svg>
+            </div>
+            <div class="gallery-item">
+                <img src="c:\Users\Administrator\Pictures\af1dbca0ede0bed8819a5aa825a9d4d4.jpg" viewBox="0 0 300 300">
+                    <rect width="300" height="300" fill="#5a3d8a"/>
+                    <text x="150" y="150" text-anchor="middle" fill="white" font-size="18" font-weight="bold">查理苏 CG 8</text>
+                </svg>
+        </div>
+    </section>
+
+    <!-- 经典语录 -->
+    <section class="container" id="quotes">
+        <h2 class="section-title">经典语录</h2>
+        <div class="quotes">
+            <div class="quote-slider">
+                <div class="quote active">
+                    <div class="quote-text">"未婚妻，看来你是被我的完美迷住了。"</div>
+                    <div class="quote-source">—— 查理苏 · 初见</div>
+                </div>
+                <div class="quote">
+                    <div class="quote-text">"天要下雪，你要吻我，都是不可抗力"</div>
+                    <div class="quote-source">—— 查理苏 · 日常互动</div>
+                </div>
+                <div class="quote">
+                    <div class="quote-text">"承认吧，你就是对我一见钟情。"</div>
+                    <div class="quote-source">—— 查理苏 · 自信宣言</div>
+                </div>
+                <div class="quote">
+                    <div class="quote-text">"我的未婚妻，当然要配得上最好的。"</div>
+                    <div class="quote-source">—— 查理苏 · 宠爱时刻</div>
+                </div>
+                <div class="quote">
+                    <div class="quote-text">"我把心意挂在云上，它永远不会降落"</div>
+                    <div class="quote-source">—— 查理苏 · 温柔守护</div>
+                </div>
+            </div>
+            <div class="quote-controls">
+                <button id="prev-quote"><i class="fas fa-chevron-left"></i></button>
+                <button id="next-quote"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系表单 -->
+    <section class="container" id="contact">
+        <h2 class="section-title">留言板</h2>
+        <div class="contact-form">
+            <form id="message-form">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> 你的昵称</label>
+                    <input type="text" id="name" class="form-control" placeholder="请输入你的昵称" required>
+                </div>
+                <div class="form-group">
+                    <label for="message"><i class="fas fa-comment"></i> 给查理苏的留言</label>
+                    <textarea id="message" class="form-control" placeholder="请分享你对查理苏的看法或想对他说的话..." required></textarea>
+                </div>
+                <button type="submit" class="btn">发送留言 <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo"><i class="fas fa-heart"></i>与查理苏的日常手札</div>
+                <ul class="footer-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">角色介绍</a></li>
+                    <li><a href="#blog">博客文章</a></li>
+                    <li><a href="#gallery">画廊</a></li>
+                    <li><a href="#quotes">经典语录</a></li>
+                    <li><a href="#contact">留言板</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-qq"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-bilibili"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>© 2023 与查理苏的日常手札 - 本博客为粉丝创作，非官方</p>
+                    <p>《光与夜之恋》游戏版权归腾讯公司所有</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        // 语录轮播功能
+        const quotes = document.querySelectorAll('.quote');
+        const prevBtn = document.getElementById('prev-quote');
+        const nextBtn = document.getElementById('next-quote');
+        let currentQuote = 0;
+
+        function showQuote(index) {
+            quotes.forEach(quote => quote.classList.remove('active'));
+            quotes[index].classList.add('active');
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentQuote = (currentQuote - 1 + quotes.length) % quotes.length;
+            showQuote(currentQuote);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentQuote = (currentQuote + 1) % quotes.length;
+            showQuote(currentQuote);
+        });
+
+        // 自动轮播
+        let quoteInterval = setInterval(() => {
+            currentQuote = (currentQuote + 1) % quotes.length;
+            showQuote(currentQuote);
+        }, 5000);
+
+        // 鼠标悬停时暂停自动轮播
+        const quotesContainer = document.querySelector('.quotes');
+        quotesContainer.addEventListener('mouseenter', () => {
+            clearInterval(quoteInterval);
+        });
+        
+        quotesContainer.addEventListener('mouseleave', () => {
+            quoteInterval = setInterval(() => {
+                currentQuote = (currentQuote + 1) % quotes.length;
+                showQuote(currentQuote);
+            }, 5000);
+        });
+
+        // 表单提交处理
+        document.getElementById('message-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('留言已提交！谢谢你对查理苏的喜爱~');
+            this.reset();
+        });
+
+        // 添加滚动效果
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero');
+            
+            parallaxElements.forEach(function(el) {
+                const speed = 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
